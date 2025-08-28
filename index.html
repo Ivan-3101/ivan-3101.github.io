@@ -324,6 +324,14 @@
             color: #475569;
         }
 
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -530,6 +538,15 @@
             margin: 0 auto;
         }
 
+        .contact p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .contact-links {
             display: flex;
             justify-content: center;
@@ -621,14 +638,40 @@
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
+        /* Mobile menu toggle - hidden by default, can be implemented with JS */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #475569;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
+            .mobile-menu-toggle { display: flex; }
             .about-content { grid-template-columns: 1fr; }
             .cta-buttons { flex-direction: column; }
             .contact-links { flex-direction: column; }
             .stats { grid-template-columns: 1fr; }
+            
+            .hero {
+                padding: 0 1rem;
+                text-align: center;
+            }
+            
+            .particle {
+                display: none; /* Hide particles on mobile for performance */
+            }
         }
     </style>
 </head>
@@ -650,6 +693,11 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -731,21 +779,13 @@
                         <span class="skill-tag">Deep Learning</span>
                         <span class="skill-tag">Neural Networks</span>
                         <span class="skill-tag">LSTM</span>
-                        <span class="skill-tag">CNN</span>
                         <span class="skill-tag">Computer Vision</span>
                         <span class="skill-tag">NLP</span>
                         <span class="skill-tag">MediaPipe</span>
                         <span class="skill-tag">TensorFlow</span>
                         <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">scikit-learn</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">OpenCV</span>
                         <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">Feature Engineering</span>
-                        <span class="skill-tag">Model Deployment</span>
-                        <span class="skill-tag">Statistical Analysis</span>
-                        <span class="skill-tag">MLOps</span>
                         <span class="skill-tag" style="background: rgba(37, 99, 235, 0.05); color: #64748b; font-style: italic; border: 1px dashed rgba(37, 99, 235, 0.3);">& many more...</span>
                     </div>
                 </div>
