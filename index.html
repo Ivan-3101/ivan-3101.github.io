@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivan Dsouza - AI/ML Engineer</title>
+    <title>Ivan Dsouza</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#2563eb">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="msapplication-config" content="favicon/browserconfig.xml">
+    <meta name="theme-color" content="#2563eb">
     <style>
         * {
             margin: 0;
@@ -95,29 +106,47 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #e2e8f0 50%, #f1f5f9 75%, #ffffff 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
         }
 
         .hero-content {
             z-index: 2;
             max-width: 600px;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #2563eb, #7c3aed, #dc2626);
+            background: linear-gradient(45deg, #2563eb, #7c3aed, #10b981, #f59e0b);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease-out;
+            animation: gradientText 4s ease-in-out infinite, fadeInUp 1s ease-out;
+            filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.2));
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            color: #64748b;
+            color: #475569;
             animation: fadeInUp 1s ease-out 0.3s both;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .cta-buttons {
@@ -127,45 +156,128 @@
         }
 
         .btn {
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             border: none;
             border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #2563eb, #7c3aed);
+            background: linear-gradient(45deg, #2563eb, #7c3aed, #2563eb);
+            background-size: 200% 200%;
             color: white;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            animation: gradientButton 3s ease-in-out infinite;
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.8);
             color: #2563eb;
             border: 2px solid #2563eb;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
         }
 
-        /* Floating particles */
+        .btn-secondary:hover {
+            background: rgba(37, 99, 235, 0.05);
+            border-color: #7c3aed;
+            color: #7c3aed;
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.25);
+        }
+
+        /* Enhanced floating particles */
         .particle {
             position: absolute;
-            background: rgba(37, 99, 235, 0.1);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.4;
+            filter: blur(1px);
         }
 
-        .particle:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: 2s; }
-        .particle:nth-child(3) { width: 40px; height: 40px; top: 80%; left: 20%; animation-delay: 4s; }
+        .particle:nth-child(1) { 
+            width: 120px; 
+            height: 120px; 
+            top: 15%; 
+            left: 5%; 
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+        .particle:nth-child(2) { 
+            width: 80px; 
+            height: 80px; 
+            top: 70%; 
+            right: 10%; 
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite reverse;
+        }
+        .particle:nth-child(3) { 
+            width: 60px; 
+            height: 60px; 
+            top: 40%; 
+            right: 25%; 
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite;
+        }
+        .particle:nth-child(4) { 
+            width: 100px; 
+            height: 100px; 
+            bottom: 20%; 
+            left: 15%; 
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+            animation: float 7s ease-in-out infinite reverse;
+        }
+        .particle:nth-child(5) { 
+            width: 40px; 
+            height: 40px; 
+            top: 25%; 
+            left: 60%; 
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.2) 0%, transparent 70%);
+            animation: float 9s ease-in-out infinite;
+        }
+
+        /* AI-themed background grid */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.6;
+            animation: gridMove 20s linear infinite;
+            z-index: 1;
+        }
 
         /* About Section */
         .about {
@@ -440,7 +552,38 @@
             background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
         }
 
-        /* Animations */
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes gradientButton {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { 
+                background: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            }
+            33% { 
+                background: radial-gradient(circle at 70% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+            }
+            66% { 
+                background: radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 90% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
+            }
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -511,6 +654,8 @@
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </section>
 
     <!-- About Section -->
@@ -567,10 +712,25 @@
                     <h3>AI/ML & Data Science</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">LSTM</span>
+                        <span class="skill-tag">Deep Learning</span>
                         <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">LSTM</span>
+                        <span class="skill-tag">CNN</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">NLP</span>
                         <span class="skill-tag">MediaPipe</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">scikit-learn</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Model Deployment</span>
+                        <span class="skill-tag">Statistical Analysis</span>
+                        <span class="skill-tag">MLOps</span>
+                        <span class="skill-tag" style="background: rgba(37, 99, 235, 0.05); color: #64748b; font-style: italic; border: 1px dashed rgba(37, 99, 235, 0.3);">& many more...</span>
                     </div>
                 </div>
                 <div class="skill-category">
